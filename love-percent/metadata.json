@@ -1,0 +1,6 @@
+{
+  "name": "Love Percent – Apna pyaar naapein",
+  "description": "Apna aur apne humsafar ka naam likhein aur dekhein aap dono ka love percent kitna banta hai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

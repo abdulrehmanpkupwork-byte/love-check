@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ========== Colors (light mode) ========== */
+:root {
+  --bg: #fff0f4;
+  --card: #ffffff;
+  --ink: #3a1030;
+  --muted: #7a5a72;
+  --rose: #ff3d71;
+  --rose2: #c2185b;
+  --gold: #ffc857;
+  --line: #f3c9d7;
+  --on-rose: #ffffff;
+  --surface-subtle: #ffe4ec;
+}
+
+/* ========== Colors (dark mode) ========== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #22081f;
+    --card: #33102e;
+    --ink: #ffeaf1;
+    --muted: #d3a8c0;
+    --rose: #ff5c8a;
+    --rose2: #ff8fb0;
+    --line: #5a2652;
+    --surface-subtle: #3d1437;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #22081f;
+  --card: #33102e;
+  --ink: #ffeaf1;
+  --muted: #d3a8c0;
+  --rose: #ff5c8a;
+  --rose2: #ff8fb0;
+  --line: #5a2652;
+  --surface-subtle: #3d1437;
+}
+
+/* ========== Base ========== */
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 'Nunito', system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Headings ========== */
+h1, h2, h3, .font-display {
+  font-family: 'Bagel Fat One', 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.3rem, 7vw, 4.2rem); }
+h2 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+h3 { font-size: 1.3rem; }
+
+/* ========== Animations ========== */
+.big-heart {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 14px;
+  display: block;
+  animation: beat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 24px rgba(255, 61, 113, 0.28));
+}
+
+.pulse-subtle {
+  animation: beat 2.2s ease-in-out infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.12); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.08); }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: floatUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ========== Focus Ring ========== */
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[role="link"]:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ========== Custom Accordion Styling ========== */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ========== Accessibility: reduced motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  .big-heart,
+  .pulse-subtle,
+  .page-enter {
+    animation: none !important;
+  }
+}
+
